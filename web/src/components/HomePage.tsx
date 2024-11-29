@@ -18,7 +18,7 @@ export const HomePage = () => {
           <div className="mt-[5vw]">
             <img src={appSS2} className="max-w-screen-lg rounded shadow-md " />
           </div>
-          <div className="h-12 w-full text-gray-300 items-end self-end text-start mt-12">
+          <div className="h-12 w-full pl-4 text-gray-300 items-end self-end text-start mt-12">
             <p>Built by HarshitCodes2</p>
           </div>
         </div>
