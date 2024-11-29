@@ -20,11 +20,14 @@ export const SideBar = () => {
     async function getChats() {
       try {
         const token = localStorage.getItem("Authorization");
-        const res = await axios.get(`http://localhost:3000/api/chats`, {
-          headers: {
-            Authorization: `${token}`,
-          },
-        });
+        const res = await axios.get(
+          `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats`,
+          {
+            headers: {
+              Authorization: `${token}`,
+            },
+          }
+        );
 
         // console.log(res.data.chats);
         setChatList(res.data.chats);
@@ -42,7 +45,7 @@ export const SideBar = () => {
     try {
       const token = localStorage.getItem("Authorization");
       const res = await axios.post(
-        `http://localhost:3000/api/chats`,
+        `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats`,
         { title: chatName },
         {
           headers: {

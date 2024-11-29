@@ -38,7 +38,7 @@ export const ChatContainer = () => {
     try {
       const token = localStorage.getItem("Authorization");
       const res = await axios.post(
-        `http://localhost:3000/api/chats`,
+        `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats`,
         { title: chatName },
         {
           headers: {
@@ -77,7 +77,7 @@ export const ChatContainer = () => {
       try {
         const token = localStorage.getItem("Authorization");
         const res = await axios.get(
-          `http://localhost:3000/api/chats/${selectedChat}`,
+          `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats/${selectedChat}`,
           {
             headers: {
               Authorization: `${token}`,
@@ -125,7 +125,7 @@ export const ChatContainer = () => {
     try {
       setMessageLoader(true);
       const res = await axios.post(
-        `http://localhost:3000/api/llm/send`,
+        `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/llm/send`,
         {
           userMessage: userRequestObj.content,
           chatId: toSendChatId,
@@ -185,7 +185,9 @@ export const ChatContainer = () => {
         <div className="flex flex-col justify-end pb-8 pt-4 h-full col-span-9 gap-6">
           <div
             id="msgDiv"
-            className={`${showSideBar ? "max-w-10/12 w-10/12" : "max-w-8/12 w-8/12"} max-h-[73vh] mx-auto justify-end overflow-y-auto custom-scrollbar`}
+            className={`${
+              showSideBar ? "max-w-10/12 w-10/12" : "max-w-8/12 w-8/12"
+            } max-h-[73vh] mx-auto justify-end overflow-y-auto custom-scrollbar`}
           >
             {chatMessages
               ? chatMessages.map((message, index) => (
@@ -215,7 +217,9 @@ export const ChatContainer = () => {
           </div>
 
           <div
-            className={`${showSideBar ? "w-10/12" : "w-8/12"} flex flex-col justify-evenly items-center mx-auto bg-stone-800  p-2 rounded-lg min-h-32`}
+            className={`${
+              showSideBar ? "w-10/12" : "w-8/12"
+            } flex flex-col justify-evenly items-center mx-auto bg-stone-800  p-2 rounded-lg min-h-32`}
           >
             <textarea
               onChange={(e) => {

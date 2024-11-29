@@ -67,7 +67,7 @@ export const SignUpPage = () => {
                   try {
                     setLoadingSign(true);
                     const res = await axios.post(
-                      `http://localhost:3000/api/user/signup`,
+                      `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/user/signup`,
                       {
                         name: name,
                         email: email,

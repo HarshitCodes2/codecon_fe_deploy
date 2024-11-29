@@ -20,7 +20,7 @@ export const AdditionalInfo = () => {
       const token = localStorage.getItem("Authorization");
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/chats/${selectedChat}`,
+          `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats/${selectedChat}`,
           {
             headers: {
               Authorization: `${token}`,
@@ -47,7 +47,9 @@ export const AdditionalInfo = () => {
   return (
     <>
       <div
-        className={`${showSideBar ? "col-span-2" : "col-span-2"} bg-stone-900 pt-4 pb-8 flex flex-col`}
+        className={`${
+          showSideBar ? "col-span-2" : "col-span-2"
+        } bg-stone-900 pt-4 pb-8 flex flex-col`}
       >
         <div className="max-h-96 min-h-96 overflow-auto custom-scrollbar">
           <p className="text-lg text-gray-400">Directory:</p>
@@ -58,7 +60,9 @@ export const AdditionalInfo = () => {
         <div className="max-h-96 min-h-96 overflow-auto custom-scrollbar">
           <p className="text-lg text-gray-400">Commands:</p>
           <pre className="text-xs whitespace-pre-wrap overflow-auto custom-scrollbar">
-            <ReactMarkdown>{terminalCommands}</ReactMarkdown>
+            <ReactMarkdown>
+              {terminalCommands ? terminalCommands : "Not commands to run yet"}
+            </ReactMarkdown>
           </pre>
         </div>
         {/* App directory structure */}
