@@ -38,7 +38,7 @@ export const ChatContainer = () => {
     try {
       const token = localStorage.getItem("Authorization");
       const res = await axios.post(
-        `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats`,
+        `https://vocal-shad-secretly.ngrok-free.app/api/chats`,
         { title: chatName },
         {
           headers: {
@@ -71,25 +71,30 @@ export const ChatContainer = () => {
   }, [chatMessages]);
 
   useEffect(() => {
-    // console.log("Crayyyyy");
+    console.log("Crayyyyy");
     async function getChatMessages() {
-      // console.log("Start");
-      try {
-        const token = localStorage.getItem("Authorization");
-        const res = await axios.get(
-          `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats/${selectedChat}`,
-          {
-            headers: {
-              Authorization: `${token}`,
-            },
-          }
-        );
+      console.log("Start");
+      if (selectedChat !== "") {
+        try {
+          const token = localStorage.getItem("Authorization");
 
-        // console.log("render");
+          const res = await axios.get(
+            `https://vocal-shad-secretly.ngrok-free.app/api/message/${selectedChat}`,
+            {
+              headers: {
+                "ngrok-skip-browser-warning": "true",
+                Authorization: `${token}`,
+              },
+            }
+          );
 
-        setChatMessages(res.data.messages ? res.data.messages.messages : []);
-      } catch (e) {
-        console.log(e);
+          console.log("render");
+          console.log(res.data.messages);
+
+          setChatMessages(res.data.messages ? res.data.messages : []);
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
 
@@ -99,6 +104,8 @@ export const ChatContainer = () => {
   }, [selectedChat, setChatMessages]);
 
   async function submitUserRequest() {
+    console.log(chatMessages);
+
     if (selectedChat === "") {
       await createChat();
       return;
@@ -125,7 +132,7 @@ export const ChatContainer = () => {
     try {
       setMessageLoader(true);
       const res = await axios.post(
-        `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/llm/send`,
+        `https://vocal-shad-secretly.ngrok-free.app/api/llm/send`,
         {
           userMessage: userRequestObj.content,
           chatId: toSendChatId,

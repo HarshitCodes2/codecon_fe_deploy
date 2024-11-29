@@ -21,16 +21,21 @@ export const SideBar = () => {
       try {
         const token = localStorage.getItem("Authorization");
         const res = await axios.get(
-          `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats`,
+          `https://vocal-shad-secretly.ngrok-free.app/api/chats`,
           {
             headers: {
+              "ngrok-skip-browser-warning": "true",
               Authorization: `${token}`,
             },
           }
         );
 
-        // console.log(res.data.chats);
-        setChatList(res.data.chats);
+        console.log(res);
+        // console.log(res);
+        // console.log(res);
+        if (res.data.chats) {
+          setChatList(res.data.chats);
+        }
       } catch (e) {
         console.log(e);
       }
@@ -45,7 +50,7 @@ export const SideBar = () => {
     try {
       const token = localStorage.getItem("Authorization");
       const res = await axios.post(
-        `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats`,
+        `https://vocal-shad-secretly.ngrok-free.app/api/chats`,
         { title: chatName },
         {
           headers: {
@@ -57,7 +62,8 @@ export const SideBar = () => {
         id: res.data.id,
         title: res.data.title,
       };
-      // console.log(chat);
+      console.log("chat");
+      console.log(chat);
 
       if (chat) {
         setSelectedChat(chat.id);
@@ -123,7 +129,10 @@ export const SideBar = () => {
                           ? "bg-stone-800"
                           : "hover:bg-stone-800"
                       }`}
-                      onClick={() => setSelectedChat(chat.id)}
+                      onClick={() => {
+                        setSelectedChat(chat.id);
+                        // console.log(selectedChat);
+                      }}
                     >
                       <p className="text-gray-300">{chat.title}</p>
                     </div>

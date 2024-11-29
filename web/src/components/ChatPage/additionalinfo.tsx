@@ -20,7 +20,7 @@ export const AdditionalInfo = () => {
       const token = localStorage.getItem("Authorization");
       try {
         const res = await axios.get(
-          `https://b5fb-2405-201-3003-70b1-cd74-ec84-ef3b-2c19.ngrok-free.app/api/chats/${selectedChat}`,
+          `https://vocal-shad-secretly.ngrok-free.app/api/chats/messages/${selectedChat}`,
           {
             headers: {
               Authorization: `${token}`,
@@ -28,8 +28,11 @@ export const AdditionalInfo = () => {
           }
         );
 
-        // console.log(res.data.messages.techStackSetup);
-        setDirStruct(JSON.parse(res.data.messages.techStackSetup));
+        // console.log("resresresresresresresresres");
+        // console.log(res);
+        if (res.data.messages) {
+          setDirStruct(JSON.parse(res.data.messages.techStackSetup));
+        }
       } catch (e) {
         if (isAxiosError(e)) {
           if (e.response) {
