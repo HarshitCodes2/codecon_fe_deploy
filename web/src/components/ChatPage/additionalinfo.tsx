@@ -60,11 +60,7 @@ export const AdditionalInfo = () => {
         <div className="max-h-96 min-h-96 overflow-auto custom-scrollbar">
           <p className="text-lg text-gray-400">Commands:</p>
           <pre className="text-xs whitespace-pre-wrap overflow-auto custom-scrollbar">
-            <ReactMarkdown>
-              {terminalCommands !== ""
-                ? terminalCommands
-                : "Not commands to run yet"}
-            </ReactMarkdown>
+            <ReactMarkdown>{terminalCommands}</ReactMarkdown>
           </pre>
         </div>
         {/* App directory structure */}

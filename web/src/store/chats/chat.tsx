@@ -48,5 +48,5 @@ export const dirStructState = atom<string>({
 
 export const terminalCommandsState = atom<string>({
   key: "terminalCommandsState",
-  default: "",
+  default: "No Commands to run yet",
 });
