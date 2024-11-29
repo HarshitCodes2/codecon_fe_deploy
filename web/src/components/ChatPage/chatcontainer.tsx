@@ -226,7 +226,7 @@ export const ChatContainer = () => {
           <div
             className={`${
               showSideBar ? "w-10/12" : "w-8/12"
-            } flex flex-col justify-evenly items-center mx-auto bg-stone-800  p-2 rounded-lg min-h-32`}
+            } flex justify-evenly  mx-auto bg-stone-800  p-2 rounded-lg min-h-32`}
           >
             <textarea
               onChange={(e) => {
@@ -236,8 +236,7 @@ export const ChatContainer = () => {
               placeholder="Enter Your Request"
               value={userRequest}
             />
-            <div className="self-end flex justify-between items-center w-full">
-              <p className="text-codecon-primary">Ask CodeCon</p>
+            <div className="">
               <Icon
                 height={"h-8"}
                 width={"w-8"}
