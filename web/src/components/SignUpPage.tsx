@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { InputDiv } from "./common/InputDiv";
 import { emailState, nameState, passwordState } from "../store/signup/signup";
 import { GhostButton, PrimaryButton } from "./common/Button";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { NavBarSign } from "./common/NavBar";
 import { useEffect } from "react";
@@ -81,7 +81,13 @@ export const SignUpPage = () => {
                     navigate("/chat");
                   } catch (e) {
                     setLoadingSign(false);
-                    alert(e.response.data.message);
+                    if (isAxiosError(e)) {
+                      if (e.response) {
+                        alert(e.response.data.message);
+                      }
+                    } else {
+                      console.log(e);
+                    }
                     // console.log(e);
                   }
                 }}

@@ -1,4 +1,13 @@
-export const InputDiv = ({
+import React from "react";
+
+interface InputDivProps {
+  placeholder: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  className?: string;
+}
+
+export const InputDiv: React.FC<InputDivProps> = ({
   placeholder,
   onChange,
   type = "text",
