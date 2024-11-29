@@ -61,7 +61,9 @@ export const AdditionalInfo = () => {
           <p className="text-lg text-gray-400">Commands:</p>
           <pre className="text-xs whitespace-pre-wrap overflow-auto custom-scrollbar">
             <ReactMarkdown>
-              {terminalCommands ? terminalCommands : "Not commands to run yet"}
+              {terminalCommands === ""
+                ? terminalCommands
+                : "Not commands to run yet"}
             </ReactMarkdown>
           </pre>
         </div>
